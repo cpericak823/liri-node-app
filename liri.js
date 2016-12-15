@@ -10,10 +10,10 @@ var fs = require('fs');
 
 //link to your twitter keys
 var client = new Twitter({
-    consumer_key: keys.consumer_key,
-    consumer_secret: keys.consumer_secret,
-    access_token_key: keys.access_token_key,
-    access_token_secret: keys.access_token_secret
+    consumer_key: keys.twitterKeys.consumer_key,
+    consumer_secret: keys.twitterKeys.consumer_secret,
+    access_token_key: keys.twitterKeys.access_token_key,
+    access_token_secret: keys.twitterKeys.access_token_secret
 });
 
 //set the paramaters to load your timeline and limit to 20
@@ -21,10 +21,12 @@ var params = { cassiepericak: 'nodejs', count: 20 };
 
 //get the your timelime using the params variable and run the function with the arguments for errors, tweets, and response
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    console.log(tweets);
 
     //if there isn't an error, log the tweets and put them in a json object
     if (!error) {
         console.log(tweets);
-        console.log(JSON.stringify(tweets, null, 2));
+    } else {
+        console.log(error);
     }
 });
