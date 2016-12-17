@@ -10,12 +10,13 @@ var inputString = process.argv;
 var action = inputString[2];
 var name = inputString[3];
 
+//call the functions
+actionObjects[action](name);
 
 //set all your functions as an object
 var actionObjects = {
     "my-tweets": function(action) {
         //Load your most recent 20 tweets
-
 
         //link to your twitter keys
         var client = new Twitter({
@@ -104,8 +105,6 @@ var actionObjects = {
 
     },
     "movie-this": function(name) {
-
-
         //use request to query the omdb api and search by the name variable or if there is no 3rd argument, search for Mr. Nobody and return the data as a json object
         request("http://www.omdbapi.com/?t=" + (name || "Mr. + Nobody") + "&y=&plot=full&tomatoes=true&r=json", function(error, response, body) {
 
@@ -132,8 +131,6 @@ var actionObjects = {
 
     },
     "do-what-it-says": function(action) {
-
-
         //use fs to read the text file
         fs.readFile('./random.txt', 'utf8', function(err, data) {
 
@@ -154,10 +151,11 @@ var actionObjects = {
 
             //set text at the 0 index equal to a variable
             var namePhrase = textArray[1];
+
+            //call the function with these parameters
             actionObjects[actionStatement](namePhrase);
 
         });
     }
 
 };
-actionObjects[action](name);
