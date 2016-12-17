@@ -4,7 +4,6 @@
   "description": "",
   "main": "keys.js",
   "dependencies": {
-    "file-system": "^2.2.2",
     "inquirer": "^2.0.0",
     "request": "^2.79.0",
     "spotify": "^0.3.0",
